@@ -6,53 +6,53 @@ export const NAV_DATA = [
     items: [
       {
         title: "Dashboard",
-        url: "/homes",
+        url: "/homess",
         icon: Icons.HomeIcon,
       },
       {
         title: "Easy Topup",
-        url: "/easypay",
+        url: "/easypays",
         icon: Icons.User,
       },
       {
         title: "My Order",
-        url: "/myorder",
+        url: "/myorders",
         icon: Icons.User,
       },
       {
         title: "Search",
-        url: "/ordersearch",
+        url: "/ordersearchs",
         icon: Icons.Table,
       },
       
       {
         title: "My Price",
-        url: "/my-price",
+        url: "/my-prices",
         icon: Icons.Table,
       },
       {
         title: "My Account",
-        url: "/myaccount",
+        url: "/myaccounts",
         icon: Icons.User,
       },
       {
         title: "My SMS",
-        url: "/mysms",
+        url: "/mysmss",
         icon: Icons.Table,
       },
       {
         title: "Sales Report",
-        url: "/salesreport",
+        url: "/salesreports",
         icon: Icons.Table,
       },
       {
         title: "Profile",
-        url: "/profile",
+        url: "/profiles",
         icon: Icons.Table,
       },
       {
         title: "Log out",
-        url: "/logout",
+        url: "/logouts",
         icon: Icons.Authentication,
       },
     ],
