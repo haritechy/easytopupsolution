@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 type TopupCountryType = {
@@ -21,13 +22,15 @@ export function TopupCountryCard({ country }: { country: TopupCountryType }) {
       onClick={handleClick}
       className="rounded-[10px] bg-white p-4 shadow-md dark:bg-gray-dark transition hover:shadow-lg cursor-pointer"
     >
-      <div className="w-full h-40 relative overflow-hidden rounded-lg mb-4">
-        <img
-          src={country.flag}
-          alt={country.country}
-          className="w-full h-full object-cover"
-        />
-      </div>
+   <div className="w-full h-40 relative overflow-hidden rounded-lg mb-4">
+  <Image
+    src={country.flag}
+    alt={country.country}
+    fill
+    className="object-cover rounded-lg"
+    sizes="100vw"
+  />
+</div>
 
       <div className="text-center">
         <h3 className="text-lg font-semibold text-dark dark:text-white">
