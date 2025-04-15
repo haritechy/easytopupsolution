@@ -9,54 +9,44 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { compactFormat, standardFormat } from "@/lib/format-number";
-import { cn } from "@/lib/utils";
 import Image from "next/image";
-
 import { useEffect, useState } from "react";
 import { useSearch } from "@/context/searchContext";
 import { getTopChannels } from "@/components/Tables/fetch";
 import { SearchIcon } from "@/assets/icons";
 
-export default function OrderSearchPage({ className }: { className?: string }) {
+export default function OrderSearchPage() {
   const { query, setQuery } = useSearch();
   const [searchText, setSearchText] = useState(query);
   const [filteredData, setFilteredData] = useState<any[]>([]);
   const [allData, setAllData] = useState<any[]>([]);
 
   useEffect(() => {
-   
     async function fetchData() {
       const data = await getTopChannels();
       setAllData(data);
-      setFilteredData(data); // default
+      setFilteredData(data);
     }
     fetchData();
   }, []);
+
   useEffect(() => {
     const trimmed = searchText.trim().toLowerCase();
-  
     if (trimmed === "") {
-      setFilteredData(allData); 
+      setFilteredData(allData);
     }
   }, [searchText, allData]);
-  
-  // Handle actual search
+
   const handleSearch = () => {
     const filtered = allData.filter((channel: any) =>
       channel.name.toLowerCase().includes(searchText.toLowerCase())
     );
     setFilteredData(filtered);
-    setQuery("")
-    // setQuery(searchText); // update global context if needed
+    setQuery("");
   };
 
   return (
-    <div
-      className={cn(
-        "grid rounded-[10px] bg-white px-4 py-4 shadow-md dark:bg-gray-dark dark:shadow-card sm:px-6 md:px-7.5 md:py-7.5",
-        className,
-      )}
-    >
+    <div className="grid rounded-[10px] bg-white px-4 py-4 shadow-md dark:bg-gray-dark dark:shadow-card sm:px-6 md:px-7.5 md:py-7.5">
       <h2 className="mb-4 text-lg font-bold text-dark dark:text-white sm:text-xl md:text-2xl">
         My Easy Search
       </h2>
@@ -108,7 +98,6 @@ export default function OrderSearchPage({ className }: { className?: string }) {
                     {channel.name}
                   </div>
                 </TableCell>
-
                 <TableCell>{compactFormat(channel.visitors)}</TableCell>
                 <TableCell className="!text-right text-green-light-1">
                   ${standardFormat(channel.revenues)}
