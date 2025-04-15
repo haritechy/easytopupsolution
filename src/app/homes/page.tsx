@@ -18,7 +18,7 @@ export default async function Home({ searchParams }: PropsType) {
 
   return (
     <>
-        <Breadcrumb pageName="Dashboard" />
+        <Breadcrumb pageName="User Home" />
       <Suspense fallback={<OverviewCardsSkeleton />}>
         <OverviewCardsGroup />
       </Suspense>
