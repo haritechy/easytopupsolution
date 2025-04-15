@@ -37,6 +37,12 @@ const nextConfig = {
         protocol:"https",
         hostname:"upload.wikimedia.org",
         port:""
+      },
+      {
+
+        protocol:"https",
+        hostname:"freepik.com",
+        port:""
       }
     ],
   },

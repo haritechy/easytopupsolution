@@ -5,45 +5,45 @@ export const NAV_DATA = [
     label: "Easy Topup services",
     items: [
       {
-        title: "Dashboard",
+        title: "Home",
         url: "/homes",
         icon: Icons.HomeIcon,
       },
       {
         title: "Easy Topup",
         url: "/easypay",
-        icon: Icons.User,
+        icon: Icons.EasyTopup,
       },
       {
         title: "My Order",
         url: "/myorder",
-        icon: Icons.User,
+        icon: Icons.MyOrder,
       },
       {
         title: "Search",
         url: "/ordersearch",
-        icon: Icons.Table,
+        icon: Icons.MySearch,
       },
       
       {
         title: "My Price",
-        url: "/my-price",
-        icon: Icons.Table,
+        url: "/my-prices",
+        icon: Icons.MyPrice,
       },
       {
         title: "My Account",
         url: "/myaccount",
-        icon: Icons.User,
+        icon: Icons.MyAccount,
       },
       {
         title: "My SMS",
         url: "/mysms",
-        icon: Icons.Table,
+        icon: Icons.MySMS,
       },
       {
         title: "Sales Report",
         url: "/salesreport",
-        icon: Icons.Table,
+        icon: Icons.SalesReport,
       },
       {
         title: "Profile",
@@ -51,7 +51,7 @@ export const NAV_DATA = [
         icon: Icons.Table,
       },
       {
-        title: "Log out",
+        title: "Logout",
         url: "/logout",
         icon: Icons.Authentication,
       },
