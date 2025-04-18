@@ -8,11 +8,10 @@ import { useSidebarContext } from "../sidebar/sidebar-context";
 import { MenuIcon } from "./icons";
 import { ThemeToggleSwitch } from "./theme-toggle";
 import { UserInfo } from "./user-info";
-import { WalletIcon , Mails } from "lucide-react";
+import { WalletIcon, Mails } from "lucide-react";
 import { useSearch } from "@/context/searchContext";
 import { Sidebar } from "../sidebar";
 import ContactMessage from "./ContactMessage";
-
 
 export function Header() {
   const { toggleSidebar, isMobile } = useSidebarContext();
@@ -30,7 +29,7 @@ export function Header() {
   }, []);
 
   return (
-    <header className="sticky top-0 z-30 flex items-center justify-between border-b border-stroke bg-gradient-to-r from-gray-200  to-blue-200 px-4 py-5 shadow-1 dark:border-stroke-dark dark:bg-gray-dark md:px-5 2xl:px-10">
+    <header className="sticky top-0 z-30 flex items-center justify-between border-b border-stroke bg-gradient-to-r from-gray-200 to-blue-200 px-4 py-5 shadow-1 dark:border-stroke-dark dark:bg-gray-dark md:px-5 2xl:px-10">
       <button
         onClick={toggleSidebar}
         className="rounded-lg border px-1.5 py-1 dark:border-stroke-dark dark:bg-[#020D1A] hover:dark:bg-[#FFFFFF1A] md:hidden"
@@ -61,13 +60,13 @@ export function Header() {
       <div className="flex flex-1 items-center justify-end gap-2 min-[375px]:gap-4">
         {/* Search */}
         <div className="relative w-full max-w-[400px]">
-        <input
-    type="search"
-    placeholder="Search"
-    value={query}
-    onChange={(e) => setQuery(e.target.value)} 
-    className="flex w-full items-center gap-3.5 rounded-full border bg-gray-2 py-3 pl-[53px] pr-5 outline-none transition-colors focus-visible:border-primary dark:border-dark-3 dark:bg-dark-2 dark:hover:border-dark-4 dark:hover:bg-dark-3 dark:hover:text-dark-6 dark:focus-visible:border-primary"
-  />
+          <input
+            type="search"
+            placeholder="Search"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            className="flex w-full items-center gap-3.5 rounded-full border bg-gray-2 py-3 pl-[53px] pr-5 outline-none transition-colors focus-visible:border-primary dark:border-dark-3 dark:bg-dark-2 dark:hover:border-dark-4 dark:hover:bg-dark-3 dark:hover:text-dark-6 dark:focus-visible:border-primary"
+          />
           <SearchIcon className="pointer-events-none absolute left-5 top-1/2 -translate-y-1/2 max-[1015px]:size-5" />
         </div>
 
@@ -82,33 +81,31 @@ export function Header() {
         )}
 
         {/* <ThemeToggleSwitch /> */}
-       
+
         <div className="shrink-0">
           <UserInfo />
         </div>
         <button onClick={() => setShowContactForm((prev) => !prev)}>
-            <Mails color="#513bf1" strokeWidth={1.75} />
-          </button>
-      
+          <Mails color="#513bf1" strokeWidth={1.75} />
+        </button>
 
-      {/* {showContactForm && (
+        {/* {showContactForm && (
         <div className="absolute top-[80px] right-10 z-50 w-[400px] bg-white dark:bg-dark-2 border rounded-xl shadow-lg p-4">
           <ContactMessage />
         </div>
       )} */}
-      {/* {showContactForm && (
+        {/* {showContactForm && (
   <div className="absolute top-[80px] right-10 z-50 w-[400px] bg-white dark:bg-dark-2 border rounded-xl shadow-lg p-4">
     <ContactMessage onClose={() => setShowContactForm(false)} />
   </div>
 )} */}
-{showContactForm && (
-  <div className="fixed inset-0 z-50 flex  items-center justify-center bg-black/40 backdrop-blur-sm">
-    <div className="w-full max-w-md mx-auto rounded-2xl bg-white dark:bg-dark-2 p-6 animate-slide border-2 border-red-200">
-      <ContactMessage onClose={() => setShowContactForm(false)} />
-    </div>
-  </div>
-)}
-
+        {showContactForm && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm">
+            <div className="animate-slide mx-auto w-full max-w-md rounded-2xl border-2 border-red-200 bg-white p-6 dark:bg-dark-2">
+              <ContactMessage onClose={() => setShowContactForm(false)} />
+            </div>
+          </div>
+        )}
       </div>
     </header>
   );

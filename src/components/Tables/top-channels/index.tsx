@@ -32,6 +32,7 @@ export function TopChannels({ className }: { className?: string }) {
     fetchAndFilter();
   }, [query]);
 
+  
   return (
     <div
       className={cn(
@@ -48,47 +49,50 @@ export function TopChannels({ className }: { className?: string }) {
           <TableHeader>
             <TableRow className="border-none uppercase text-xs sm:text-sm [&>th]:text-center">
               <TableHead className="min-w-[120px] !text-left">
-                Source
+                Date
               </TableHead>
-              <TableHead>Visitors</TableHead>
-              <TableHead className="!text-right">Revenues</TableHead>
-              <TableHead>Sales</TableHead>
-              <TableHead>Conversion</TableHead>
+              <TableHead>Ref no</TableHead>
+              <TableHead className="!text-right">Descriptions</TableHead>
+              <TableHead>Mobile</TableHead>
+              <TableHead>Status</TableHead>
+              <TableHead>Balance</TableHead>
             </TableRow>
           </TableHeader>
 
           <TableBody>
-            {filteredData.map((channel, i) => (
-              <TableRow
-                className="text-center text-xs font-medium text-dark dark:text-white sm:text-sm md:text-base"
-                key={channel.name + i}
-              >
-                <TableCell className="flex min-w-fit items-center gap-2 sm:gap-3">
-                  <Image
-                    src={channel.logo}
-                    className="rounded-full object-cover w-6 h-6 sm:w-8 sm:h-8"
-                    width={40}
-                    height={40}
-                    alt={channel.name + " Logo"}
-                    role="presentation"
-                  />
-                  <div className="truncate max-w-[120px] sm:max-w-none">
-                    {channel.name}
-                  </div>
-                </TableCell>
+  {filteredData.map((channel, i) => (
+    <TableRow
+      className="text-center text-xs font-medium text-dark dark:text-white sm:text-sm md:text-base py-1"
+      key={channel.name + i}
+    >
+      <TableCell className="flex min-w-fit items-center gap-2 sm:gap-3 py-2 px-2 leading-tight">
+        <Image
+          src={channel.logo}
+          className="rounded-full object-cover w-6 h-6 sm:w-6 sm:h-6"
+          width={24}
+          height={24}
+          alt={channel.name + " Logo"}
+          role="presentation"
+        />
+        <div className="truncate max-w-[120px] sm:max-w-none">
+          {channel.name}
+        </div>
+      </TableCell>
 
-                <TableCell>{compactFormat(channel.visitors)}</TableCell>
+      <TableCell className="py-2 px-2 leading-tight">{compactFormat(channel.visitors)}</TableCell>
 
-                <TableCell className="!text-right text-green-light-1">
-                  ${standardFormat(channel.revenues)}
-                </TableCell>
+      <TableCell className="!text-right text-green-light-1 py-1 px-2 leading-tight">
+        ${standardFormat(channel.revenues)}
+      </TableCell>
 
-                <TableCell>{channel.sales}</TableCell>
+      <TableCell className="py-2 px-2 leading-tight">{channel.sales}</TableCell>
 
-                <TableCell>{channel.conversion}%</TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
+      <TableCell className="py-2s px-2 leading-tight">{channel.conversion}%</TableCell>
+      <TableCell className="py-2s px-2 leading-tight">{channel.conversion}%</TableCell>
+    </TableRow>
+  ))}
+</TableBody>
+
         </Table>
       </div>
     </div>

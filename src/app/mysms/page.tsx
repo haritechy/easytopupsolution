@@ -84,10 +84,6 @@ export default function MultiTabSection() {
           ))}
         </div>
 
-
-
-
-
         {activeTab === "Sent sms" && (
           <div className="grid rounded-[10px] bg-white px-4 py-4 shadow-md dark:bg-gray-dark dark:shadow-card sm:px-6 md:px-7.5 md:py-7.5">
             <h2 className="mb-4 text-lg font-bold text-dark dark:text-white sm:text-xl md:text-2xl">
@@ -95,7 +91,7 @@ export default function MultiTabSection() {
             </h2>
             <Table>
               <TableHeader>
-                <TableRow className="text-xs uppercase sm:text-sm [&>th]:text-center">
+                <TableRow className="text-xs uppercase sm:text-sm [&>th]:text-left">
                   <TableHead className="text-left">Country</TableHead>
                   <TableHead>Total Topups</TableHead>
                   <TableHead>Revenue</TableHead>
@@ -142,7 +138,7 @@ export default function MultiTabSection() {
               <TableBody>
                 {dummyRechargeHistory.map((item) => (
                   <TableRow
-                    className="text-center text-xs font-medium text-dark dark:text-white sm:text-sm md:text-base"
+                    className="text-left text-xs font-medium text-dark dark:text-white sm:text-sm md:text-base"
                     key={item.id}
                   >
                     <TableCell className="text-left">{item.mobile}</TableCell>

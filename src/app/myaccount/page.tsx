@@ -86,43 +86,48 @@ export default function MultiTabSection() {
         </div>
 
         {activeTab === "order" && (
-  <div className="rounded-[10px] bg-white px-4 py-4 shadow-md dark:bg-gray-dark dark:shadow-card sm:px-6 md:px-7.5 md:py-7.5">
-    <h2 className="mb-4 text-lg font-bold text-dark dark:text-white sm:text-xl md:text-2xl">
-      My Easy Order
-    </h2>
+          <div className="rounded-[10px] bg-white px-4 py-4 shadow-md dark:bg-gray-dark dark:shadow-card sm:px-6 md:px-7.5 md:py-7.5">
+            <h2 className="mb-4 text-lg font-bold text-dark dark:text-white sm:text-xl md:text-2xl">
+              My Easy Order
+            </h2>
 
-    {/* Button group */}
-    <div className="mb-6 flex gap-4">
-      {["easytop", "quickpay", "autoref"].map((type) => (
-        <button
-          key={type}
-          onClick={() => setOrderType(type)}
-          className={`rounded px-4 py-2 text-sm font-semibold capitalize transition-all duration-200
-            ${
-              orderType === type
-                ? "bg-primary text-white shadow"
-                : "bg-gray-100 text-gray-600 hover:bg-primary hover:text-white"
-            }`}
-        >
-          {type === "easytop" && "EasyTop"}
-          {type === "quickpay" && "QuickPay"}
-          {type === "autoref" && "AutoRefill"}
-        </button>
-      ))}
-    </div>
+            {/* Button group */}
+            <div className="mb-6 flex gap-4">
+              {["easytop", "quickpay", "autoref"].map((type) => (
+                <button
+                  key={type}
+                  onClick={() => setOrderType(type)}
+                  className={`rounded px-4 py-2 text-sm font-semibold capitalize transition-all duration-200 ${
+                    orderType === type
+                      ? "bg-primary text-white shadow"
+                      : "bg-gray-100 text-gray-600 hover:bg-primary hover:text-white"
+                  }`}
+                >
+                  {type === "easytop" && "EasyTop"}
+                  {type === "quickpay" && "QuickPay"}
+                  {type === "autoref" && "AutoRefill"}
+                </button>
+              ))}
+            </div>
 
-    {/* Conditional content */}
-    {orderType === "easytop" &&  <div className="text-sm text-gray-700 dark:text-white">QuickPay details go here.</div>}
-    {orderType === "quickpay" && (
-      <div className="text-sm text-gray-700 dark:text-white">QuickPay details go here.</div>
-    )}
-    {orderType === "autoref" && (
-      <div className="text-sm text-gray-700 dark:text-white">AutoRefill settings go here.</div>
-    )}
-  </div>
-)}
-
-
+            {/* Conditional content */}
+            {orderType === "easytop" && (
+              <div className="text-sm text-gray-700 dark:text-white">
+                QuickPay details go here.
+              </div>
+            )}
+            {orderType === "quickpay" && (
+              <div className="text-sm text-gray-700 dark:text-white">
+                QuickPay details go here.
+              </div>
+            )}
+            {orderType === "autoref" && (
+              <div className="text-sm text-gray-700 dark:text-white">
+                AutoRefill settings go here.
+              </div>
+            )}
+          </div>
+        )}
 
         {activeTab === "topup" && (
           <div className="grid rounded-[10px] bg-white px-4 py-4 shadow-md dark:bg-gray-dark dark:shadow-card sm:px-6 md:px-7.5 md:py-7.5">

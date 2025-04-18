@@ -9,7 +9,8 @@ export function TabsNavigation() {
   const pathname = usePathname();
 
   return (
-    <nav className="hidden lg:flex justify-center w-full border-b border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 ">
+    
+    <nav className="hidden lg:flex sticky top-21 z-20 justify-center w-full border-b border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 ">
       <div className="flex overflow-x-auto lg:justify-center gap-2 sm:gap-4 px-2 sm:px-4 py-2 sm:py-3">
         {NAV_DATA.flatMap((section) =>
           section.items

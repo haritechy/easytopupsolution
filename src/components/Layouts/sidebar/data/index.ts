@@ -27,7 +27,7 @@ export const NAV_DATA = [
       
       {
         title: "My Price",
-        url: "/my-prices",
+        url: "/myprice",
         icon: Icons.MyPrice,
       },
       {

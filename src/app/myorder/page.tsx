@@ -1,3 +1,5 @@
+
+import BackButton from "@/components/Backcomponent/Button";
 import Breadcrumb from "@/components/Breadcrumbs/Breadcrumb";
 import { InvoiceTable } from "@/components/Tables/invoice-table";
 import { TopChannels } from "@/components/Tables/top-channels";
@@ -19,14 +21,11 @@ const TablesPage = () => {
 
       <div className="space-y-10">
         <Suspense fallback={<TopChannelsSkeleton />}>
+
           <TopChannels />
         </Suspense>
         
-        {/* <Suspense fallback={<TopProductsSkeleton />}>
-          <TopProducts />
-        </Suspense> */}
-
-        {/* <InvoiceTable /> */}
+     
       </div>
     </>
   );

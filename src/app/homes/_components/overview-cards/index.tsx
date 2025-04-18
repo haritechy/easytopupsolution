@@ -1,18 +1,39 @@
+"use client";
 import { compactFormat } from "@/lib/format-number";
 import { getOverviewData } from "../../fetch";
 import { OverviewCard } from "./card";
 import * as icons from "./icons";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "@/redux/store";
+import { useEffect } from "react";
+import dashboardReducer from "@/redux/reducer/dashboardReducercount";
+import { DashBoarddetailfetch } from "@/redux/actions/dashboardActions";
 
-export async function OverviewCardsGroup() {
-  const { views, profit, products, users } = await getOverviewData();
+export function OverviewCardsGroup() {
+  const dispatch = useDispatch<AppDispatch>();
+
+  const { data, loading, error } = useSelector(
+    (state: RootState) => state.dahsboardetail,
+  );
+
+  useEffect(() => {
+    dispatch(DashBoarddetailfetch("1222"));
+  }, [dispatch]);
+
+  const {
+    Balance = 0,
+    DueAmount = 0,
+    TotalTopup = 0,
+    CostOfSales = 0,
+    CostOfMonthlySales = 0,
+  } = data && data.length > 0 ? data[0] : {};
 
   return (
-    <div className="grid gap-4 sm:grid-cols-2 sm:gap-6 xl:grid-cols-3 2xl:gap-7.5">
+    <div className="grid gap-4 sm:grid-cols-2 sm:gap-6 xl:grid-cols-4 2xl:gap-7.5">
       <OverviewCard
         label="Your Due Amount"
         data={{
-          ...views,
-          value: compactFormat(views.value),
+          value: "$" + compactFormat(DueAmount),
         }}
         Icon={icons.Views}
       />
@@ -20,8 +41,7 @@ export async function OverviewCardsGroup() {
       <OverviewCard
         label="Your Balance"
         data={{
-          ...profit,
-          value: "$" + compactFormat(profit.value),
+          value: "$" + compactFormat(Balance),
         }}
         Icon={icons.Profit}
       />
@@ -29,8 +49,7 @@ export async function OverviewCardsGroup() {
       <OverviewCard
         label="Your Total Topup"
         data={{
-          ...products,
-          value: compactFormat(products.value),
+          value: "$" + compactFormat(TotalTopup),
         }}
         Icon={icons.Product}
       />
@@ -38,16 +57,15 @@ export async function OverviewCardsGroup() {
       <OverviewCard
         label="Total Cost of Sales"
         data={{
-          ...users,
-          value: compactFormat(users.value),
+          value: "$" + compactFormat(CostOfSales),
         }}
         Icon={icons.Users}
       />
-        <OverviewCard
-        label="Total Cost of  Monthly Sales"
+
+      <OverviewCard
+        label="Total Cost of Monthly Sales"
         data={{
-          ...users,
-          value: compactFormat(users.value),
+          value: "$" + compactFormat(CostOfMonthlySales),
         }}
         Icon={icons.Users}
       />
