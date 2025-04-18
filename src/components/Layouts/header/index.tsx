@@ -8,15 +8,16 @@ import { useSidebarContext } from "../sidebar/sidebar-context";
 import { MenuIcon } from "./icons";
 import { ThemeToggleSwitch } from "./theme-toggle";
 import { UserInfo } from "./user-info";
-import { WalletIcon } from "lucide-react";
+import { WalletIcon , Mails } from "lucide-react";
 import { useSearch } from "@/context/searchContext";
 import { Sidebar } from "../sidebar";
+import ContactMessage from "./ContactMessage";
 
 
 export function Header() {
   const { toggleSidebar, isMobile } = useSidebarContext();
   const [walletAmount, setWalletAmount] = useState<number | null>(null);
-  
+  const [showContactForm, setShowContactForm] = useState(false);
 
   const { query, setQuery } = useSearch();
   useEffect(() => {
@@ -85,6 +86,29 @@ export function Header() {
         <div className="shrink-0">
           <UserInfo />
         </div>
+        <button onClick={() => setShowContactForm((prev) => !prev)}>
+            <Mails color="#513bf1" strokeWidth={1.75} />
+          </button>
+      
+
+      {/* {showContactForm && (
+        <div className="absolute top-[80px] right-10 z-50 w-[400px] bg-white dark:bg-dark-2 border rounded-xl shadow-lg p-4">
+          <ContactMessage />
+        </div>
+      )} */}
+      {/* {showContactForm && (
+  <div className="absolute top-[80px] right-10 z-50 w-[400px] bg-white dark:bg-dark-2 border rounded-xl shadow-lg p-4">
+    <ContactMessage onClose={() => setShowContactForm(false)} />
+  </div>
+)} */}
+{showContactForm && (
+  <div className="fixed inset-0 z-50 flex  items-center justify-center bg-black/40 backdrop-blur-sm">
+    <div className="w-full max-w-md mx-auto rounded-2xl bg-white dark:bg-dark-2 p-6 animate-slide border-2 border-red-200">
+      <ContactMessage onClose={() => setShowContactForm(false)} />
+    </div>
+  </div>
+)}
+
       </div>
     </header>
   );
