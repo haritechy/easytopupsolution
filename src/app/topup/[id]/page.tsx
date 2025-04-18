@@ -1,33 +1,29 @@
 // app/topup/[id]/page.tsx
-
+"use client"
 import { topupCountries, topupOperatorsByCountry } from "@/app/easypay/fetch";
-
-type Props = {
-  params: {
-    id: string;
-  };
-};
-
-export default function TopupOperatorPage({ params }: Props) {
-  const { id } = params;
-
+import BackButton from "@/components/Backcomponent/Button";
+import { use } from "react";
+// type Props = {
+//   params: {
+//     id: string;
+//   };
+// };
+export default function TopupOperatorPage({params}: {params: Promise<{ id: string }>}) {
+  const { id } = use(params);
   const selectedCountry = topupCountries.find((country) => country.id === id);
   const operators = topupOperatorsByCountry[id] || [];
-
   if (!selectedCountry) {
     return (
       <div className="p-6">
-        <h1 className="text-2xl font-bold text-red-600">Country not found</h1>
+        <h1 className="text-2xl font-bold text-red-600">Countrsy not found</h1>
         <p>Please go back and choose a valid country.</p>
       </div>
     );
   }
-
   return (
     <div className="p-6">
       <h1 className="text-2xl font-bold mb-2">Topup in {selectedCountry.country}</h1>
       <p className="mb-6 text-gray-600">Select an operator to continue:</p>
-
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4 2xl:gap-6">
         {operators.map((operator) => (
           <div
@@ -47,6 +43,9 @@ export default function TopupOperatorPage({ params }: Props) {
             </div>
           </div>
         ))}
+      </div>
+      <div className=" py-10">
+      <BackButton />
       </div>
     </div>
   );
