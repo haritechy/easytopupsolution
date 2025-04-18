@@ -12,6 +12,7 @@ export default function TopupOperatorPage({params}: {params: Promise<{ id: strin
   const { id } = use(params);
   const selectedCountry = topupCountries.find((country) => country.id === id);
   const operators = topupOperatorsByCountry[id] || [];
+
   if (!selectedCountry) {
     return (
       <div className="p-6">
@@ -22,12 +23,15 @@ export default function TopupOperatorPage({params}: {params: Promise<{ id: strin
   }
   return (
     <div className="p-6">
-      <h1 className="text-2xl font-bold mb-2">Topup in {selectedCountry.country}</h1>
+      <h1 className="text-2xl font-bold mb-2">
+        Topup in {selectedCountry.country}
+      </h1>
       <p className="mb-6 text-gray-600">Select an operator to continue:</p>
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4 2xl:gap-6">
         {operators.map((operator) => (
           <div
             key={operator.code}
+            onClick={handleClick}
             className="rounded-[10px] bg-white p-4 shadow-md transition hover:shadow-lg cursor-pointer dark:bg-gray-dark"
           >
             <div className="flex flex-col items-center justify-center text-center">
