@@ -14,6 +14,7 @@ import { useEffect, useState } from "react";
 import { useSearch } from "@/context/searchContext";
 import { getTopChannels } from "@/components/Tables/fetch";
 import { SearchIcon } from "@/assets/icons";
+import BackButton from "@/components/Backcomponent/Button";
 
 export default function OrderSearchPage() {
   const { query, setQuery } = useSearch();
@@ -50,7 +51,7 @@ export default function OrderSearchPage() {
       <h2 className="mb-4 text-lg font-bold text-dark dark:text-white sm:text-xl md:text-2xl">
         My Easy Search
       </h2>
-
+{/* <BackButton /> */}
       <div className="w-full overflow-x-auto">
         {/* Search box */}
         <div className="relative mb-4 w-full max-w-[300px]">

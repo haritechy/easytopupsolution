@@ -3,18 +3,18 @@
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
-type TopupCountryType = {
-  id: string;
-  country: string;
-  currency: string;
-  flag: string;
+type TopupCategoryType = {
+  CategoryID: number;
+  CategoryName: string;
+  CategoryImage: string;
+  Currency?: string; 
 };
 
-export function TopupCountryCard({ country }: { country: TopupCountryType }) {
+export function TopupCountryCard({ country }: { country: TopupCategoryType }) {
   const router = useRouter();
 
   const handleClick = () => {
-    router.push(`/topup/${country.id}`);
+    router.push(`/topup/${country.CategoryID}`);
   };
 
   return (
@@ -22,23 +22,25 @@ export function TopupCountryCard({ country }: { country: TopupCountryType }) {
       onClick={handleClick}
       className="rounded-[10px] bg-white p-4 shadow-md dark:bg-gray-dark transition hover:shadow-lg cursor-pointer"
     >
-   <div className="w-full h-40 relative overflow-hidden rounded-lg mb-4">
-  <Image
-    src={country.flag}
-    alt={country.country}
-    fill
-    className="object-cover rounded-lg"
-    sizes="100vw"
-  />
-</div>
+      <div className="w-full h-40 relative overflow-hidden rounded-lg mb-4">
+      <Image
+  src={`https://easytopup.sg/agent/flags/4x3/${country.CategoryImage}.svg`}
+  alt={country.CategoryName}
+  fill
+  className="object-cover rounded-lg"
+  sizes="100vw"
+/>
+      </div>
 
       <div className="text-center">
         <h3 className="text-lg font-semibold text-dark dark:text-white">
-          {country.country}
+          {country.CategoryName}
         </h3>
-        <p className="text-sm text-gray-500 dark:text-gray-400">
-          Currency: {country.currency}
-        </p>
+        {country.Currency && (
+          <p className="text-sm text-gray-500 dark:text-gray-400">
+            Currency: {country.Currency}
+          </p>
+        )}
       </div>
     </div>
   );
