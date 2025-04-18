@@ -1,16 +1,13 @@
 "use client";
-
-import { useEffect, useState } from "react";
+import { useEffect, useState } from "react"
 import { SearchIcon } from "@/assets/icons";
 import Image from "next/image";
 import Link from "next/link";
 import { useSidebarContext } from "../sidebar/sidebar-context";
 import { MenuIcon } from "./icons";
-import { ThemeToggleSwitch } from "./theme-toggle";
 import { UserInfo } from "./user-info";
 import { WalletIcon, Mails } from "lucide-react";
 import { useSearch } from "@/context/searchContext";
-import { Sidebar } from "../sidebar";
 import ContactMessage from "./ContactMessage";
 
 export function Header() {
@@ -50,12 +47,7 @@ export function Header() {
         </Link>
       )}
 
-      {/* <div className="max-xl:hidden">
-        <h1 className="mb-0.5 text-heading-5 font-bold text-dark dark:text-white">
-   
-        </h1>
-        <p className="font-medium">Easy Topup Solutions</p>
-      </div> */}
+
 
       <div className="flex flex-1 items-center justify-end gap-2 min-[375px]:gap-4">
         {/* Search */}
@@ -89,16 +81,6 @@ export function Header() {
           <Mails color="#513bf1" strokeWidth={1.75} />
         </button>
 
-        {/* {showContactForm && (
-        <div className="absolute top-[80px] right-10 z-50 w-[400px] bg-white dark:bg-dark-2 border rounded-xl shadow-lg p-4">
-          <ContactMessage />
-        </div>
-      )} */}
-        {/* {showContactForm && (
-  <div className="absolute top-[80px] right-10 z-50 w-[400px] bg-white dark:bg-dark-2 border rounded-xl shadow-lg p-4">
-    <ContactMessage onClose={() => setShowContactForm(false)} />
-  </div>
-)} */}
         {showContactForm && (
           <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm">
             <div className="animate-slide mx-auto w-full max-w-md rounded-2xl border-2 border-red-200 bg-white p-6 dark:bg-dark-2">
